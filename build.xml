@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This build file provdes a close approximation of the build process 
+     and build settings inside Flash Builder, but it is not an exact copy.  
+     Please customize this file as necessary. -->
+	<project name="blank_project" default="build-release" basedir=".">
+	
+	<!-- DEFINE BUILD VARIABLES -->
+	<property name="PROJECT_NAME" value="blank_project" />
+	<property name="SWF_WIDTH" value="960" />  <!-- 960 -->
+	<property name="SWF_HEIGHT" value="610" />  <!-- 610 -->
+	<property name="DEBUG_theaters_PATH" value="theaters/" />
+	<property name="RELEASE_theaters_PATH" value="theaters/" />
+	<property name="DEBUG_GATEWAY_PATH" value="" />
+	<property name="RELEASE_GATEWAY_PATH" value="" />
+	<!-- <property name="FLEX_HOME" value="/Applications/Adobe Flash Builder 4/sdks/4.0.0"/> -->  <!-- Typical Mac Flex Home -->
+	<property name="FLEX_HOME" value="C:\Program Files (x86)\Adobe\Adobe Flash Builder 4\sdks\4.0.0"/> <!-- Typical PC Flex Home -->
+	<property name="SDK_VERSION" value="4.0.0.14159"/>
+	<property name="PROJECT_DIR" value="."/>
+	<property name="SOURCE_DIR" value="${PROJECT_DIR}/src"/>
+	<property name="DEBUG_DIR" value="${PROJECT_DIR}/bin-debug"/>
+	<property name="RELEASE_DIR" value="${PROJECT_DIR}/bin-release"/>
+	<property name="LOCALE" value="en_US"/>
+
+	<taskdef name="mxmlc" classname="flex.ant.MxmlcTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+	<taskdef name="compc" classname="flex.ant.CompcTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+	<taskdef name="html-wrapper" classname="flex.ant.HtmlWrapperTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+
+	<!-- BUILD DEBUG -->
+	<target name="build-debug">
+		<antcall target="clean-debug"/>
+		<antcall target="compile-debug"/>
+	</target>
+
+	<target name="clean-debug">
+		<copy todir="${DEBUG_DIR}">
+			<fileset dir="includes"/>
+		</copy>
+		
+		<!-- REPLACE TOKENS IN INDEX.HTML -->
+		<replace file="${DEBUG_DIR}/index.template.html" token="${title}" value="${PROJECT_NAME}"/>
+		<replace file="${DEBUG_DIR}/index.template.html" token="${width}" value="${SWF_WIDTH}"/>
+		<replace file="${DEBUG_DIR}/index.template.html" token="${height}" value="${SWF_HEIGHT}"/>
+		<replace file="${DEBUG_DIR}/index.template.html" token="${swf}" value="theaters/swf/Shell.swf"/>
+		<move file="${DEBUG_DIR}/index.template.html" tofile="${DEBUG_DIR}/index.html"/>
+		
+		<!-- REPLACE TOKENS IN SITE-CONFIG.XML -->
+		<replace file="${DEBUG_DIR}/theaters/xml/site-config.xml" token="${theaters}" value="${DEBUG_theaters_PATH}"/>
+		<replace file="${DEBUG_DIR}/theaters/xml/site-config.xml" token="${gateway}" value="${DEBUG_GATEWAY_PATH}"/>
+				
+	</target>
+	
+	<target name="compile-debug">
+		
+		<mxmlc 
+			file="${SOURCE_DIR}/Shell.as"
+			output="${DEBUG_DIR}/theaters/swf/design_bottle/Shell.swf"
+			locale="${LOCALE}"
+			static-rsls="false"
+			accessible="true"
+		>
+			<compiler.debug>false</compiler.debug>
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+
+			<source-path path-element="${SOURCE_DIR}"/>
+
+			<external-library-path file="${FLEX_HOME}/frameworks/libs/player/10.0/playerglobal.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/flash-integration.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/flex.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/utilities.swc" append="true"/>
+			
+			<library-path dir="${PROJECT_DIR}/libs" includes="*" append="true"/>
+
+		</mxmlc>
+
+		<mxmlc 
+			file="${SOURCE_DIR}/Main.as"
+			output="${DEBUG_DIR}/theaters/swf/Main.swf"
+			locale="${LOCALE}"
+			static-rsls="false"
+			accessible="true"
+		>
+			<compiler.debug>false</compiler.debug>
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+
+			<source-path path-element="${SOURCE_DIR}"/>
+
+			<external-library-path file="${FLEX_HOME}/frameworks/libs/player/10.0/playerglobal.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/flash-integration.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/flex.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/utilities.swc" append="true"/>
+			<!-- <library-path file="${PROJECT_DIR}/libs/foundation.swc" append="true"/>  -->
+
+			<library-path dir="${PROJECT_DIR}/libs" includes="*" append="true"/>
+
+		</mxmlc>
+
+	</target>
+
+	<!-- BUILD RELEASE -->
+	<target name="build-release">
+		<antcall target="clean-release"/>
+		<antcall target="compile-release"/>
+	</target>
+
+	<target name="clean-release">
+		<delete includeemptydirs="true">
+			<fileset dir="${RELEASE_DIR}" includes="**/*"/>
+		</delete>
+
+		<copy todir="${RELEASE_DIR}">
+			<fileset dir="includes"/>
+		</copy>
+		
+		<!-- REPLACE TOKENS IN INDEX.HTML -->
+		<replace file="${RELEASE_DIR}/index.template.html" token="${title}" value="${PROJECT_NAME}"/>
+		<replace file="${RELEASE_DIR}/index.template.html" token="${width}" value="${SWF_WIDTH}"/>
+		<replace file="${RELEASE_DIR}/index.template.html" token="${height}" value="${SWF_HEIGHT}"/>
+		<replace file="${RELEASE_DIR}/index.template.html" token="${swf}" value="theaters/swf/Shell.swf"/>
+		<move file="${RELEASE_DIR}/index.template.html" tofile="${RELEASE_DIR}/index.html"/>
+
+		<!-- REPLACE TOKENS IN SITE-CONFIG.XML -->
+		<replace file="${DEBUG_DIR}/theaters/xml/site-config.xml" token="${theaters}" value="${RELEASE_theaters_PATH}"/>
+		<replace file="${DEBUG_DIR}/theaters/xml/site-config.xml" token="${gateway}" value="${RELEASE_GATEWAY_PATH}"/>
+	</target>
+
+	<target name="compile-release">
+
+		<mxmlc 
+			file="${SOURCE_DIR}/Shell.as"
+			output="${RELEASE_DIR}/theaters/swf/Shell.swf"
+			locale="${LOCALE}"
+			static-rsls="false"
+			accessible="true"
+		>
+			<compiler.debug>false</compiler.debug>
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+
+			<source-path path-element="${SOURCE_DIR}"/>
+
+			<external-library-path file="${FLEX_HOME}/frameworks/libs/player/10.0/playerglobal.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/flash-integration.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/flex.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/utilities.swc" append="true"/>
+			<!-- <library-path file="${PROJECT_DIR}/libs/foundation.swc" append="true"/>  -->
+
+			<library-path dir="${PROJECT_DIR}/libs" includes="*" append="true"/>
+
+		</mxmlc>
+
+		<mxmlc 
+			file="${SOURCE_DIR}/Main.as"
+			output="${RELEASE_DIR}/theaters/swf/Main.swf"
+			locale="${LOCALE}"
+			static-rsls="false"
+			accessible="true"
+		>
+			<compiler.debug>false</compiler.debug>
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+
+			<source-path path-element="${SOURCE_DIR}"/>
+
+			<external-library-path file="${FLEX_HOME}/frameworks/libs/player/10.0/playerglobal.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/flash-integration.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/flex.swc" append="true"/>
+			<library-path file="${FLEX_HOME}/frameworks/libs/utilities.swc" append="true"/>
+			<!-- <library-path file="${PROJECT_DIR}/libs/foundation.swc" append="true"/>  -->
+
+			<library-path dir="${PROJECT_DIR}/libs" includes="*" append="true"/>
+
+		</mxmlc>
+
+	</target>
+	
+</project>

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head profile="http://www.w3.org/2005/10/profile">
+		<title></title>
+		<meta name="keywords" content=""/>
+		<meta name="description" content=""/>
+		<!-- <meta name="google-site-verification" content="" />  -->
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+		<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="theaters/css/global.css" />
+		<style type="text/css" media="screen">
+			body { background:#000; height: 100%; margin: 0; padding: 0; }
+			a { float:center;  color:#DDD; }
+			#noFlashDiv h1{ font-size:2em; margin-bottom:20px; color:#FFF; }
+			#noFlashDiv h2{ font-size:1.5em; color:#fa0000; }
+			#noFlashDiv { background:#000; color:#FFF; font: .65em Arial, Helvetica sans-serif; height: 100%; width:600px; padding:20px; }
+			#noFlashDiv *{ padding:0; margin:0; }
+			#noFlashDiv dl{ margin-top:20px; width:200px; float:left; }
+			#noFlashDiv dt{ font-size:1.3em; font-weight:bold; color:#FFF; margin-bottom:5px; }
+			#noFlashDiv a { float:left; clear:both; width:100%; height:100%; margin-top:10px; color:#DDD; }
+			#flashDiv { position: absolute; }
+			#footer { display:none; background:#000; color:#DDD; font: .65em Arial, Helvetica sans-serif; padding: 15px 10px 10px 10px; margin-top: -10px; }
+			#flashcontent {width:960; height:572px; position:absolute; }
+		</style>
+		<script type="text/javascript" src="theaters/js/swfobject.js"></script>
+		<script type="text/javascript" src="theaters/js/swfaddress.js"></script>
+		<script type="text/javascript" src="theaters/js/swffit.js"></script>
+		<script type="text/javascript" src="theaters/js/s_code.js"></script>
+		<script type="text/javascript">
+			<!--
+				
+				var flashvars = { dataHost: "dev.fortifiedstudio.com", config: "theaters/xml/site-config.xml", locale: "en" };
+				
+				var passed=window.location.search.substring(1);
+				var passedArray = passed.split('&');
+				for(var i=0; i < passedArray.length; i++){
+					var pae = passedArray[i].split('=');
+					flashvars[pae[0]] = pae[1];
+				}
+				
+				var adjScreenWidth = '960';
+				var adjScreenHeight = '610';
+				
+				var params = {
+					menu: 'false', 
+					allowfullscreen: 'true',
+					quality: 'high',
+					scale: 'noScale',
+					salign: 'tl',
+					bgcolor: '#FFFFFF',
+					wmode: 'opaque',
+					allowscriptaccess: "always"
+				};
+				
+				var attributes = {
+					id:'flashcontent'
+				};
+				
+				swfobject.embedSWF("theaters/swf/Shell.swf", "flashcontent", adjScreenWidth, adjScreenHeight, "10.0.0", 'media/expressInstall.swf', flashvars, params, attributes);
+				SWFID = "flashcontent";
+				
+			//-->
+		</script>
+		<script type="text/javascript">
+			<!--
+				
+				
+				function resize(){
+					if(document.body.clientWidth <= 1000)
+						document.getElementById("flashcontent").style.width= "960px";
+					else
+						document.getElementById("flashcontent").style.width= "100%";
+					if(document.body.clientHeight <= 570)
+						document.getElementById("flashcontent").style.height = "572px";
+					else{
+						document.getElementById("flashcontent").style.height = "100%";
+					}
+				}
+				
+			//-->
+		</script>
+		<script type="text/javascript">
+			<!--
+				
+				function chopstage(id, h) {
+					var element = document.getElementById(id);
+					element.style.height  = Math.max(h,document.documentElement.clientHeight) + "px";
+					return true;
+				}
+				
+				function screenMin() {
+					if (document.documentElement.clientWidth < 960) {
+					
+						self.resizeTo(960, 768);
+						self.focus();
+					} else {
+					
+						self.focus();
+					}
+				}
+				
+				function showFooter() {
+					var footer = document.getElementById('footer');
+					footer.style.display = 'block';
+				}
+				
+			
+				function setTitle(title) {
+						SWFAddress.setTitle(title);
+				}
+				
+				
+			//-->
+		</script>
+	</head>
+	<body>
+		<div id="flashcontent">
+			<div id="noFlashDiv">
+			<h1></h1>
+			<p>
+				
+			</p>
+			<br />
+			<h2>Flash Not Detected</h2>
+			<p>To view this site, please click on this button to download and install the FLASH Player.</p>
+				<a href="http://get.adobe.com/flashplayer/">
+					<img src="http://www.adobe.com/images/shared/download_buttons/get_adobe_flash_player.png" alt="Get Adobe Flash player" />
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			<!--
+				
+				if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+				
+			//-->
+		</script>
+		<noscript></noscript>
+	</body>
+</html>

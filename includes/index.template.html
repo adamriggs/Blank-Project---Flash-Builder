@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">	
+	<head profile="http://www.w3.org/2005/10/profile">
+		<title>${title}</title>
+		<meta name="keywords" content=""/>
+		<meta name="description" content=""/>
+		<!-- <meta name="google-site-verification" content="" />  -->
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+		<link rel="shortcut icon" type="image/ico" href="assets/img/favicon.ico" />
+		
+		<link rel="stylesheet" type="text/css" href="assets/css/global.css" />
+		
+		<script type="text/javascript" src="assets/js/swfobject.js"></script>
+		<script type="text/javascript" src="assets/js/swfaddress.js"></script>
+		<script type="text/javascript" src="assets/js/swffit.js"></script>
+		
+		<!-- <script type="text/javascript" src="assets/js/s_code.js"></script>  --> <!-- Omniture -->
+		<!-- <script src="http://connect.facebook.net/en_US/all.js"></script> -->		 <!-- Facebook Connect -->
+		<!-- <script type="text/javascript" src="assets/js/social.js"></script> -->	 <!-- Facebook -->
+		
+		<!-- flash related code -->
+		<script type="text/javascript">
+			<!--
+				
+				var flashvars = { };
+				flashvars.config = "assets/xml/site-config.xml";
+				flashvars.locale = "en";
+				
+				var passed=window.location.search.substring(1);
+				var passedArray = passed.split('&');
+				for(var i=0; i < passedArray.length; i++){
+					var pae = passedArray[i].split('=');
+					flashvars[pae[0]] = pae[1];
+				}
+				
+				var adjScreenWidth = '${width}';
+				var adjScreenHeight = '${height}';
+				
+				var params = {
+					menu: 'false', 
+					allowfullscreen: 'true',
+					quality: 'high',
+					scale: 'noScale',
+					salign: 'tl',
+					bgcolor: '#000000',
+					wmode: 'opaque',
+					allowscriptaccess: "always"
+				};
+				
+				var attributes = {
+					id:'flashContainer'
+				};
+				
+				function launchswf(){
+						swfobject.embedSWF("${swf}", "flashContainer", adjScreenWidth, adjScreenHeight, "10.0.0", 'assets/swf/expressInstall.swf', flashvars, params, attributes);
+						SWFID = "flashContainer";
+				}
+				
+				function setTitle(title) {
+						SWFAddress.setTitle(title);
+				}
+				
+			//-->
+		</script>
+		
+		<!-- optional div resizing code -->
+		<script type="text/javascript">
+			<!--
+				function resize(){
+					if(document.body.clientWidth <= 1000)
+						document.getElementById("flashContainer").style.width= "1000px";
+					else
+						document.getElementById("flashContainer").style.width= "100%";
+					if(document.body.clientHeight <= 570)
+						document.getElementById("flashContainer").style.height = "570px";
+					else{
+						document.getElementById("flashContainer").style.height = "100%";
+					}
+				}
+				
+				function chopstage(id, h) {
+					var element = document.getElementById(id);
+					element.style.height  = Math.max(h,document.documentElement.clientHeight) + "px";
+					return true;
+				}
+				
+				function screenMin() {
+					if (document.documentElement.clientWidth < 1000) {
+					
+						self.resizeTo(1000, 768);
+						self.focus();
+					} else {
+					
+						self.focus();
+					}
+				}
+				
+				function showFooter() {
+					var footer = document.getElementById('footer');
+					footer.style.display = 'block';
+				}
+				
+			//-->
+		</script>
+	</head>
+	
+	<body>
+		<div id="flashContainer">
+			<div id="noFlashDiv">
+			<h1>Header description</h1>
+			<p>
+				Body copy
+			</p>
+			<br />
+			<h2>Flash Not Detected</h2>
+			<p class="flash">You need at least <strong>Flash Player 10</strong> to view this site.</p>
+      <p class="flash">Please download from the link below.</p>
+      <p class="flash"><a href="http://www.adobe.com/products/flashplayer/"><img src="http://www.adobe.com/images/shared/download_buttons/get_adobe_flash_player.png" border="0"></a></p>
+			</div>
+			<div id="fb-root"></div>
+		</div>
+		<script type="text/javascript">
+			<!--
+				if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+			//-->
+		</script>
+		
+		<!-- Google Analytics & SWF Launching code -->
+		<script type="text/javascript">
+    	<!--
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-18916110-1']);  <!-- *** Change User Account Based On Project! *** -->
+      _gaq.push(['_trackPageview']);
+      _gaq.push(launchswf);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    	-->
+    </script>	
+		<noscript></noscript>
+	</body>
+</html>

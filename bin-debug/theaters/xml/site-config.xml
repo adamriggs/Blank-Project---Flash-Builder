@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site-config>
+	<mainSWF value="Main.swf" />
+	<baseURL value="" />
+	<assetURL value="theaters/" />
+	<gatewayURL value="" />
+	<locales>
+		<en>
+		</en>
+	</locales>
+</site-config>

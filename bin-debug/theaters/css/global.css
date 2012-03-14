@@ -1,0 +1,90 @@
+
+html{
+	color:#000;
+	background:#AAA;
+	margin: 0;
+	padding: 0;
+	/* height: 100%; */
+}
+body{
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;
+	background-color:#AAA;
+	color:#000
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+	margin:0;
+	padding:0;
+}
+table{
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img{
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var{
+	font-style:normal;
+	font-weight:normal;
+}
+li{
+	list-style:none;
+}
+caption,th{
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6{
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after{
+	content:'';
+}
+abbr,acronym {
+	border:0;
+	font-variant:normal;
+}
+sup {
+	vertical-align:text-top;
+}
+sub {
+	vertical-align:text-bottom;
+}
+input,textarea,select{
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+}
+input,textarea,select{
+	font-size:100%;
+}
+legend{
+	color:#000;
+}
+#flashContainer {
+	margin:0 auto;
+	padding: 0;
+	background-color:#fff;
+	position:relative; /* absolute */
+	text-align:center;
+	/* width: 960px; */
+	width: 1000px;
+	/* height: 520px; */
+	height: 572px;
+	min-iehegt
+	clear:left;
+}
+
+#noFlashDiv {
+	/* width: 960px; */
+  /* height: 520px; */
+	margin-left: 0 auto;
+	margin-right: auto;
+	background-Scolor: #aaa;
+	padding: 20px;
+}
+#noFlashDiv h1{ font-size:2em; margin-bottom:20px; color:#000; }
+#noFlashDiv h2{ font-size:1.5em; color:#fa0000; }
+#noFlashDiv dl{ margin-top:20px; width:200px; float:left; }
+#noFlashDiv dt{ font-size:1.3em; font-weight:bold; color:#FFF; margin-bottom:5px; }
+#noFlashDiv a { float:left; clear:both; width:100%; margin-top:10px; color:#DDD; }
+#footer { display:none; background:#000; color:#DDD; font: .65em Arial, Helvetica sans-serif; padding: 15px 10px 10px 10px; margin-top: -10px; }
